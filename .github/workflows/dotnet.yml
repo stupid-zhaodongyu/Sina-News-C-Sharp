@@ -28,10 +28,16 @@ jobs:
           dotnet-version: '8.0.x'  # 选择你需要的 .NET 版本
 
       - name: Restore dependencies
-        run: dotnet restore
+      run: dotnet restore YourProject/YourProject.csproj
 
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build Sina-News-C-Sharp/Sina-News-C-Sharp.csproj --no-restore
+
+      - name: Run tests
+        run: dotnet test Sina-News-C-Sharp/Sina-News-C-Sharp.csproj --no-build --verbosity normal
+
+      - name: Print working directory
+        run: pwd
 
       # - name: Test
         # run: dotnet test --no-build --verbosity normal
@@ -52,7 +58,7 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Run the application
-        run: dotnet run --project Sina-News-C-Sharp # 替换为你的项目名称
+        run: dotnet run --project Sina-News-C-Sharp/Sina-News-C-Sharp.csproj # 替换为你的项目名称
 
       - name: Commit and changes
         run: |
