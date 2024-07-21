@@ -38,16 +38,18 @@ namespace ConsoleApp1
 
                     string allNews = string.Join("", newsList.Select(news => news.ToString()));
 
-                    string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                    string currentDirectory = Directory.GetCurrentDirectory();
+                    string filePath = Path.Combine(currentDirectory, "sina.html");
 
+                    Console.WriteLine("filePath is " + filePath);
                     // 获取 Program.cs 所在的目录
                     // 假设 Program.cs 文件在项目的根目录，而输出文件位于 bin/Debug 或 bin/Release
                     string projectRootPath = Path.GetFullPath(Path.Combine(currentDirectory, @"..\..\.."));
 
-                    // 定义文件路径，将 index.html 文件写入到 Program.cs 同一级目录                    
-                    string filePath = "sina.html";
-                    Console.WriteLine("filePath is " + filePath);
-                    Console.WriteLine("projectRootPath is " + projectRootPath);
+                    //// 定义文件路径，将 index.html 文件写入到 Program.cs 同一级目录                    
+                    //string filePath = "sina.html";
+                    //Console.WriteLine("filePath is " + filePath);
+                    //Console.WriteLine("projectRootPath is " + projectRootPath);
 
                     string sinaHtml = File.ReadAllText(filePath, Encoding.UTF8);
 
