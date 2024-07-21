@@ -40,6 +40,11 @@ namespace ConsoleApp1
 
                     string currentDirectory = Directory.GetCurrentDirectory();
                     string filePath = Path.Combine(currentDirectory, "sina.html");
+                    if (File.Exists(filePath))
+                    {
+                        string fileContents = File.ReadAllText(filePath);
+                        Console.WriteLine(fileContents);
+                    }
 
                     Console.WriteLine("filePath is " + filePath);
                     // 获取 Program.cs 所在的目录
