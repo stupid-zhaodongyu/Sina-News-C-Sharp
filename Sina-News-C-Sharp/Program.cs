@@ -47,6 +47,7 @@ namespace ConsoleApp1
                     // 定义文件路径，将 index.html 文件写入到 Program.cs 同一级目录                    
                     string filePath = "sina.html";
                     Console.WriteLine("filePath is " + filePath);
+                    Console.WriteLine("projectRootPath is " + projectRootPath);
 
                     string sinaHtml = File.ReadAllText(filePath, Encoding.UTF8);
 
