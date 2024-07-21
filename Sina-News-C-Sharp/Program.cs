@@ -39,10 +39,18 @@ namespace ConsoleApp1
                     string allNews = string.Join("", newsList.Select(news => news.ToString()));
 
                     string currentDirectory = Directory.GetCurrentDirectory();
-                    string filePath = Path.Combine(currentDirectory, @"..\..\..\");
+                    //string filePath = Path.Combine(currentDirectory, @"..\..\..\");
                     //Console.WriteLine("currentDirectory is " + currentDirectory);
                     string parentDirectory = Directory.GetParent(currentDirectory).ToString();
                     Console.WriteLine("parentDirectory is " + parentDirectory);
+                    string filePath = Path.Combine(parentDirectory, "sina.html");
+                    if (File.Exists(filePath))
+                    {
+                        // 读取文件内容
+                        string fileContents = File.ReadAllText(filePath);
+                        // 输出文件内容
+                        Console.WriteLine("exist " + fileContents);
+                    }
                     //Console.WriteLine("filePath is " + filePath);
                     // 获取 Program.cs 所在的目录
                     // 假设 Program.cs 文件在项目的根目录，而输出文件位于 bin/Debug 或 bin/Release
