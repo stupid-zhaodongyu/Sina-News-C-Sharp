@@ -43,7 +43,7 @@ namespace ConsoleApp1
                     //Console.WriteLine("currentDirectory is " + currentDirectory);
                     string parentDirectory = Directory.GetParent(currentDirectory).ToString();
                     Console.WriteLine("parentDirectory is " + parentDirectory);
-                    string filePath = Path.Combine(parentDirectory, "sina.html");
+                    string filePath = Path.Combine(currentDirectory, "sina.html");
                     if (File.Exists(filePath))
                     {
                         // 读取文件内容
