@@ -44,6 +44,8 @@ namespace ConsoleApp1
                     string parentDirectory = Directory.GetParent(currentDirectory).ToString();
                     Console.WriteLine("parentDirectory is " + parentDirectory);
                     string filePath = Path.Combine(currentDirectory, "sina.html");
+                    string indexPath = Path.Combine(currentDirectory, "index.html");
+
                     if (File.Exists(filePath))
                     {
                         // 读取文件内容
@@ -74,7 +76,7 @@ namespace ConsoleApp1
                     //string projectRootPath = Path.GetFullPath(Path.Combine(currentDirectory, @"..\..\.."));
 
                     // 定义文件路径，将 index.html 文件写入到 Program.cs 同一级目录
-                    string indexPath = Path.Combine(projectRootPath, "index.html");
+                    //string indexPath = Path.Combine(projectRootPath, "index.html");
 
                     // 删除现有文件（如果存在）
                     if (File.Exists(indexPath))
