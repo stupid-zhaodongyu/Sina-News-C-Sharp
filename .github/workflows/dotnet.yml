@@ -63,14 +63,12 @@ jobs:
       - name: Run the application
         run: dotnet run --project Sina-News-C-Sharp/Sina-News-C-Sharp.csproj # 替换为你的项目名称
 
-      - name: Commit and changes
-        run: |
-         git config --local user.email "stupid_zhaodongyu@hotmail.com"
-         git config --local user.name "dongyu.zhao"
-         git add index.html
-         git commit -m "update sina news"
       - name: Push changes
-        uses:  ad-m/github-push-action@master
-        with:
-           github_token: ${{ secrets.MY_GIT_TOKEN }}
-           branch: master
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'actions@github.com'
+          git add .
+          git commit -m 'Automated commit from GitHub Actions'
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GIT_TOKEN }}
