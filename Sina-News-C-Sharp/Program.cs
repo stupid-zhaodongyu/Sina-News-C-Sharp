@@ -40,6 +40,7 @@ namespace ConsoleApp1
 
                     string currentDirectory = Directory.GetCurrentDirectory();
                     string filePath = Path.Combine(currentDirectory, @"..\..\..\");
+                    Console.WriteLine("currentDirectory is " + currentDirectory);
 
                     Console.WriteLine("filePath is " + filePath);
                     // 获取 Program.cs 所在的目录
