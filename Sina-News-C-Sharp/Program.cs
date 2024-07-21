@@ -39,42 +39,14 @@ namespace ConsoleApp1
                     string allNews = string.Join("", newsList.Select(news => news.ToString()));
 
                     string currentDirectory = Directory.GetCurrentDirectory();
-                    string parentDirectory = Directory.GetParent(currentDirectory).ToString();
-                    Console.WriteLine("parentDirectory is " + parentDirectory);
+
                     string filePath = Path.Combine(currentDirectory, "sina.html");
                     string indexPath = Path.Combine(currentDirectory, "index.html");
-
-                    if (File.Exists(filePath))
-                    {
-                        // 读取文件内容
-                        string fileContents = File.ReadAllText(filePath);
-                        // 输出文件内容
-                        Console.WriteLine("exist " + fileContents);
-                    }
-                    //Console.WriteLine("filePath is " + filePath);
-                    // 获取 Program.cs 所在的目录
-                    // 假设 Program.cs 文件在项目的根目录，而输出文件位于 bin/Debug 或 bin/Release
-                    string projectRootPath = Path.GetFullPath(Path.Combine(currentDirectory, @"..\..\.."));
-                    //Console.WriteLine("projectRootPath is " + projectRootPath);
-
-                    //// 定义文件路径，将 index.html 文件写入到 Program.cs 同一级目录                    
-                    //string filePath = "sina.html";
-                    //Console.WriteLine("filePath is " + filePath);
-                    //Console.WriteLine("projectRootPath is " + projectRootPath);
 
                     string sinaHtml = File.ReadAllText(filePath, Encoding.UTF8);
 
                     // 替换 ${content} 占位符
                     sinaHtml = sinaHtml.Replace("${content}", allNews);
-
-                    //string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-
-                    // 获取 Program.cs 所在的目录
-                    // 假设 Program.cs 文件在项目的根目录，而输出文件位于 bin/Debug 或 bin/Release
-                    //string projectRootPath = Path.GetFullPath(Path.Combine(currentDirectory, @"..\..\.."));
-
-                    // 定义文件路径，将 index.html 文件写入到 Program.cs 同一级目录
-                    //string indexPath = Path.Combine(projectRootPath, "index.html");
 
                     // 删除现有文件（如果存在）
                     if (File.Exists(indexPath))
