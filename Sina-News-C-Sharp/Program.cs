@@ -39,7 +39,7 @@ namespace ConsoleApp1
                     string allNews = string.Join("", newsList.Select(news => news.ToString()));
 
                     string currentDirectory = Directory.GetCurrentDirectory();
-                    string filePath = Path.Combine(currentDirectory, "sina.html");
+                    string filePath = Path.Combine(currentDirectory, @"..\..\..\sina.html");
                     if (File.Exists(filePath))
                     {
                         string fileContents = File.ReadAllText(filePath);
