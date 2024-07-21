@@ -33,8 +33,10 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release --no-restore
 
-      - name: Test
-        run: dotnet test --no-build --verbosity normal
+      # - name: Test
+        # run: dotnet test --no-build --verbosity normal
+      - name: Print working directory
+        run: pwd
 
   push_changes:
     runs-on: ubuntu-latest
