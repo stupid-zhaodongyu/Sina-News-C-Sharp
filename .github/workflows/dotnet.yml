@@ -1,0 +1,65 @@
+name: Build and Run .NET Code
+
+
+
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    # - cron:  '5,10,15,20,25,30,35,40,45,50,55 * * * *'
+    - cron:  '0,5,10,15,20,25,30,35,40,45,50,55 * * * *'
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'  # 选择你需要的 .NET 版本
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
+
+  push_changes:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
+
+      - name: Run the application
+        run: dotnet run --project SinaNewsC# # 替换为你的项目名称
+
+      - name: Commit and changes
+        run: |
+         git config --local user.email "stupid_zhaodongyu@hotmail.com"
+         git config --local user.name "dongyu.zhao"
+         git add index.html
+         git commit -m "update sina news"
+      - name: Push changes
+        uses:  ad-m/github-push-action@master
+        with:
+           github_token: ${{ secrets.MY_GIT_TOKEN }}
+           branch: master
