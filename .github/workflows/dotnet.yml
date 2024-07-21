@@ -28,7 +28,7 @@ jobs:
           dotnet-version: '8.0.x'  # 选择你需要的 .NET 版本
 
       - name: Restore dependencies
-        run: dotnet restore YourProject/YourProject.csproj
+        run: dotnet restore Sina-News-C-Sharp/Sina-News-C-Sharp.csproj
 
       - name: Build
         run: dotnet build Sina-News-C-Sharp/Sina-News-C-Sharp.csproj --no-restore
