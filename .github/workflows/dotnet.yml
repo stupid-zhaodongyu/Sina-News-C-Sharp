@@ -40,7 +40,7 @@ jobs:
         run: pwd
         
       - name: List files in project directory
-        run: ls -la YourProject
+        run: ls -la  Sina-News-C-Sharp
 
       # - name: Test
         # run: dotnet test --no-build --verbosity normal
